@@ -181,7 +181,7 @@ def main():
     #Task8('1 2; 3 4; 1 0');
 
     # №9 Даний текст. Знайти слова, що складаються з цифр, і суму чисел, які утворюють ці слова. 
-    Task9('some shit 12345. Hate this lab 1243. It sucks! 1488');
+    #Task9('some shit 12345. Hate this lab 1243. It sucks! 1488');
 
     input("press enter to exit...") 
 
