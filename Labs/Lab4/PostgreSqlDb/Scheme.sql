@@ -46,3 +46,20 @@ CREATE TABLE "session_users"(
  FOREIGN KEY ("session_id") REFERENCES "session"("id") ON DELETE CASCADE,
  FOREIGN KEY ("user_id") REFERENCES "user"("id") ON DELETE CASCADE
 );
+
+
+DROP FUNCTION get_course_lectures;
+
+CREATE OR REPLACE FUNCTION get_course_lectures(courseId INT4)
+  RETURNS TABLE("id" INT4, "name" VARCHAR(50), "course_id" INT4, "content" TEXT) AS
+$$
+BEGIN
+ RETURN QUERY
+ 
+ SELECT l.id, l.name, l.course_id, l.content
+ FROM "lecture" l
+ WHERE l.course_id = courseId;
+ 
+END; $$
+ 
+LANGUAGE plpgsql;

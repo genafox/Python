@@ -53,6 +53,9 @@
     <Compile Include="ViewModels\CourseInfo.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ViewModels\ViewModelDataMapper.py">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />

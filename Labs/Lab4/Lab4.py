@@ -106,8 +106,12 @@ def seed(context):
     context.executeNonQuery(createMarkTemplate, course2Id, user4Id, 5.0, None, datetime(2017, 10, 12, 18, 00, 00).strftime('%Y-%m-%d %H:%M:%S'))
 
 def getAllCourses(context, dataMapper, shouldPrint=True):
-    rows = context.executeQuery(getAllCoursesTemplate)
+    rows = context.executeQuery(getAllCoursesTemplate);
     courses = list(map(lambda row: dataMapper.MapCourse(row), rows));
+    for c in courses:
+            lectureRows = context.executeProcedure("get_course_lectures", c.id);
+            courseLectures = list(map(lambda row: dataMapper.MapLecture(row), lectureRows));
+            c.lectures = courseLectures;
     if shouldPrint:
         for c in courses:
             print(c.toString());
@@ -120,7 +124,7 @@ def main():
 
     with DbContext(connSettings) as context:
         # seed
-        seed(context);
+        # seed(context);
 
         #get all courses
         courses = getAllCourses(context, dataMapper);

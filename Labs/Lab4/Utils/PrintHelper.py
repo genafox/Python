@@ -1,7 +1,7 @@
 def getIndent(indentLevel):
         indent = "";
         while indentLevel > 0:
-            intent += "\t";
+            indent += "\t";
             indentLevel -= 1;
         return indent;
 
