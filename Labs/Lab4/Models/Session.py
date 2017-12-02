@@ -5,4 +5,7 @@ class Session(object):
         self.endDate = endDate;
         self.curseId = curseId;
 
+    def toString(self):
+        return "";
+
 

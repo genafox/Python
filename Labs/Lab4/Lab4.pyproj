@@ -21,6 +21,9 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="DataMapper.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="DbConnectionSettings.py">
       <SubType>Code</SubType>
     </Compile>

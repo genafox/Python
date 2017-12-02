@@ -17,8 +17,14 @@ class DbContext(object):
         return res;
 
     def executeScalar(self, queryString, *params):
-        res = self.__safeExecute__(queryString, lambda cur: cur.fetchone()[0], *params);
+        res = self.__safeExecute__(queryString, lambda cur: self.__getScalarResult__(cur), *params);
         return res;
+
+    def __getScalarResult__(self, cur):
+        if cur.rowcount > 0:
+            return cur.fetchone()[0];
+        else:
+            return 0;
 
     def __safeExecute__(self, queryString, getResultFunc, *params):
         try:

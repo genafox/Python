@@ -5,4 +5,7 @@ class Mark(object):
         self.mark = mark;
         self.comment = comment;
 
+    def toString(self):
+        return "";
+
 
