@@ -1,4 +1,6 @@
-class Course(object):
+from Models.Entity import *
+
+class Course(Entity):
     def __init__(self, id, name, price, marks=[], lectures=[], sessions=[]):
         self.id = id;
         self.name = name;
@@ -7,16 +9,11 @@ class Course(object):
         self.lectures = lectures;
         self.sessions = sessions;
 
-    def toString(self):
-        return """id: {0}, 
-                  name: {1}, 
-                  price: {2},
-                  lectures: [{3}],
-                  marks: [{4}],
-                  sessions: [{5}]""".format(
-                      self.id,
-                      self.name,
-                      self.price,
-                      "\n\t".join(map(lambda l: l.toString(), self.lectures)),
-                      "\n\t".join(map(lambda m: m.toString(), self.marks)),
-                      "\n\t".join(map(lambda s: s.toString(), self.sessions)));
+    def toString(self, indentLevel=0):
+        template = super().getTemplate(indentLevel, "id: {0},", "name: {1},", "price: {2},", "lectures: [{3}],", "marks: [{4}],", "sessions: [{5}]\n");
+        return template.format(self.id,
+            self.name,
+            self.price,
+            "\n".join(map(lambda l: l.toString(1), self.lectures)),
+            "\n".join(map(lambda m: m.toString(1), self.marks)),
+            "\n".join(map(lambda s: s.toString(1), self.sessions)));

@@ -34,6 +34,9 @@
     <Compile Include="Models\Course.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Models\Entity.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Models\Lecture.py">
       <SubType>Code</SubType>
     </Compile>
@@ -46,9 +49,15 @@
     <Compile Include="Models\User.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Utils\PrintHelper.py" />
+    <Compile Include="ViewModels\CourseInfo.py">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
+    <Folder Include="ViewModels\" />
+    <Folder Include="Utils\" />
     <Folder Include="PostgreSqlDb\" />
   </ItemGroup>
   <ItemGroup>

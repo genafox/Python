@@ -24,7 +24,7 @@ DROP TABLE IF EXISTS "mark" CASCADE;
 CREATE TABLE "mark" (
  "course_id" INT4 REFERENCES "course"("id") ON DELETE CASCADE,
  "user_id" INT4 REFERENCES "user"("id") ON DELETE CASCADE,
- "mark" NUMERIC(1,1) CHECK ("mark" > 0 AND "mark" <= 5.0),
+ "mark" NUMERIC(2,1) CHECK ("mark" > 0.0 AND "mark" <= 5.0),
  "comment" TEXT,
  "date" TIMESTAMP NOT NULL,
  PRIMARY KEY ("course_id", "user_id")
@@ -46,4 +46,3 @@ CREATE TABLE "session_users"(
  FOREIGN KEY ("session_id") REFERENCES "session"("id") ON DELETE CASCADE,
  FOREIGN KEY ("user_id") REFERENCES "user"("id") ON DELETE CASCADE
 );
-

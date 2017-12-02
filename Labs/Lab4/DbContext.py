@@ -13,18 +13,16 @@ class DbContext(object):
         pass;
 
     def executeQuery(self, queryString, *params):
-        res = self.__safeExecute__(queryString, lambda cur: cur.fetchall(), params);
+        res = self.__safeExecute__(queryString, lambda cur: cur.fetchall(), *params);
+        return res;
+
+    def executeNonQuery(self, queryString, *params):
+        res = self.__safeExecute__(queryString, lambda cur: None, *params);
         return res;
 
     def executeScalar(self, queryString, *params):
-        res = self.__safeExecute__(queryString, lambda cur: self.__getScalarResult__(cur), *params);
+        res = self.__safeExecute__(queryString, lambda cur: cur.fetchone()[0], *params);
         return res;
-
-    def __getScalarResult__(self, cur):
-        if cur.rowcount > 0:
-            return cur.fetchone()[0];
-        else:
-            return 0;
 
     def __safeExecute__(self, queryString, getResultFunc, *params):
         try:
